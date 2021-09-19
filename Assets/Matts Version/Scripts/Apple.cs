@@ -13,6 +13,12 @@ public class Apple : MonoBehaviour
         {
             //remove
             Destroy(this.gameObject);
+            // Get a reference to the ApplePicker component of Main Camera
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+
+            // Call the public AppleDestroyed() method of apScript
+
+            apScript.AppleDestroyed();                                 
         }
     }
 }

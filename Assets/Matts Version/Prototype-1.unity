@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &761627279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7691939222425298766, guid: ef428fa992f574a2b928f8dd6ecf8c63, type: 3}
-  m_PrefabInstance: {fileID: 6068078529706706035}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &994046794
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +227,7 @@ GameObject:
   - component: {fileID: 1788576712}
   - component: {fileID: 1788576711}
   - component: {fileID: 1788576710}
+  - component: {fileID: 1788576713}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,28 +300,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1814051838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4469275687756711045, guid: 05e6e3d051c6b4c6e94c61ddc293762e, type: 3}
-  m_PrefabInstance: {fileID: 4469275689168109435}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1814051839
+--- !u!114 &1788576713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814051838}
+  m_GameObject: {fileID: 1788576709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49d03e84130d1414797b620625b3281f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ce59cc05905a4167a624313446bd55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applePrefab: {fileID: 761627279}
-  speed: 10
-  leftAndRightEdge: 30
-  chanceToChangeDirections: 0.1
-  secondsBetweenAppleDrops: 1
+  basketPrefab: {fileID: 0}
+  numBaskets: 3
+  basketBottomY: -14
+  basketSpacingY: 2
 --- !u!1001 &4469275689168109435
 PrefabInstance:
   m_ObjectHideFlags: 0

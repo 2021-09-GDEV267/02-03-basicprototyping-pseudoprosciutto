@@ -34,20 +34,20 @@ public class ApplePicker : MonoBehaviour
 
 
     }
-        //This destroys all remaining apples on screen to give a game over
-        //this happened because an apple got bottom of screen.
-     public void AppleDestroyed()
+    //This destroys all remaining apples on screen to give a game over
+    //this happened because an apple got bottom of screen.
+    public void AppleDestroyed()
+    {
+        // Destroy all of the falling apples
+
+        //gets an array of all the apples. 
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+
+        //iterate through array destroy all apples
+        foreach (GameObject tGO in tAppleArray)
         {
-            // Destroy all of the falling apples
-
-            //gets an array of all the apples. 
-            GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
-
-            //iterate through array destroy all apples
-            foreach (GameObject tGO in tAppleArray)
-            {
-                Destroy(tGO);
-            }
+            Destroy(tGO);
+        }
 
 
 
@@ -64,5 +64,13 @@ public class ApplePicker : MonoBehaviour
 
         Destroy(tBasketGO);
 
+        // If there are no Baskets left, restart the game
+
+        if (basketList.Count == 0)
+        {
+
+            SceneManager.LoadScene("_Scene_0");
+
+        }
     }
-    }
+}

@@ -49,7 +49,7 @@ public class ApplePicker : MonoBehaviour
             // Destroy one of the baskets                                     
 
             // Get the index of the last Basket in basketList
-            int basketIndex = basketList.Count - 1;
+            //  int basketIndex = basketList.Count - 1;
 
             // Get a reference to that Basket GameObject
             GameObject tBasketGO = basketList[0];

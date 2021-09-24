@@ -61,7 +61,7 @@ public class ApplePicker : MonoBehaviour
             //no baskets left
             if (basketList.Count == 0)
                 {
-                SceneManager.LoadScene("Prototype-1");
+                SceneManager.LoadScene("Scene1_ApplePicker");
                 }
         }
     }

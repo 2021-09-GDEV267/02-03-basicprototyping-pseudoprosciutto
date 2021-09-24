@@ -52,10 +52,10 @@ public class ApplePicker : MonoBehaviour
             int basketIndex = basketList.Count - 1;
 
             // Get a reference to that Basket GameObject
-            GameObject tBasketGO = basketList[basketIndex];
+            GameObject tBasketGO = basketList[0];
 
             // Remove the Basket from the list and destroy the GameObject
-            basketList.RemoveAt(basketIndex);
+            basketList.RemoveAt(0);
             Destroy(tBasketGO);
 
             //no baskets left

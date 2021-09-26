@@ -40,8 +40,24 @@ public class Slingshot : MonoBehaviour
 
         if(mouseDelta.magnitude > maxMagnitude)
         {
-
+            mouseDelta.Normalize();
+            mouseDelta *= maxMagnitude;
         }
+
+        //move projectile:
+        Vector3 projPos = launchPos + mouseDelta;
+        projectile.transform.position = projPos;
+
+        //look for mouse button release
+        if (Input.GetMouseButtonUp(0))
+            {
+            aimingMode = false; //change state to false
+            projectileRigidbody.isKinematic = false;
+            projectileRigidbody.velocity = -mouseDelta * velocityMult;
+
+            FollowCam.POI = projectile;
+            projectile = null;
+            }
     }
 
 

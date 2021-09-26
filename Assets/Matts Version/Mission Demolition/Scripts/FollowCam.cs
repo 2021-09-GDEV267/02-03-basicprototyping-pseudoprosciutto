@@ -15,6 +15,8 @@ public class FollowCam : MonoBehaviour
     [Header("Set Dynamically")]
     public float camZ;// The desired Z pos of the camera
 
+    
+
     void Awake() 
     {
         camZ = this.transform.position.z;
@@ -22,9 +24,27 @@ public class FollowCam : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (POI == null) return;// if no poi, exit f.update.
 
-        Vector3 destination = POI.transform.position;
+        Vector3 destination;
+
+        if (POI == null) //no poi
+        {
+            destination = Vector3.zero;// if no poi, return screen to 0,0,0
+        }
+        else //get position
+        {
+            destination = POI.transform.position;
+
+            if(POI.tag == "Projectile")
+            {
+                if (POI.GetComponent<Rigidbody>().IsSleeping())  // is sleeping means no movement   
+                    //sleep threshold found in Unity's PhysicsManager
+                {
+                    POI = null;
+                    return;
+                }
+            }
+        }
 
         //limit minimum values:
         destination.x = Mathf.Max(minXY.x, destination.x);

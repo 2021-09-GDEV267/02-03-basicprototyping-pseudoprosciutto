@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ApplePicker : MonoBehaviour
 {
 
-    [Header("Set in Inspector")]
+    [Header("Set in Inspector")]                                             // a
     public GameObject basketPrefab;
     public int numBaskets = 3;
     public float basketBottomY = -14f;
@@ -16,52 +16,61 @@ public class ApplePicker : MonoBehaviour
 
     void Start()
     {
-            basketList = new List<GameObject>();
         //create multiple baskets
         for (int i = 0; i < numBaskets; i++)
         {
+            basketList = new List<GameObject>();
+
             GameObject tBasketGO = Instantiate<GameObject>(basketPrefab);
+
             Vector3 pos = Vector3.zero;
+
             pos.y = basketBottomY + (basketSpacingY * i);
+
             tBasketGO.transform.position = pos;
+
             basketList.Add(tBasketGO);
         }
 
 
     }
-        //This destroys all remaining apples on screen to give a game over
-        //this happened because an apple got bottom of screen.
-     public void AppleDestroyed()
+    //This destroys all remaining apples on screen to give a game over
+    //this happened because an apple got bottom of screen.
+    public void AppleDestroyed()
+    {
+        // Destroy all of the falling apples
+
+        //gets an array of all the apples. 
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+
+        //iterate through array destroy all apples
+        foreach (GameObject tGO in tAppleArray)
         {
-            // Destroy all of the falling apples
-
-            //gets an array of all the apples. 
-            GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
-
-            //iterate through array destroy all apples
-            foreach (GameObject tGO in tAppleArray)
-            {
-                Destroy(tGO);
-            }
+            Destroy(tGO);
+        }
 
 
 
-            // Destroy one of the baskets                                     
+        // Destroy one of the baskets                                      // e
 
-            // Get the index of the last Basket in basketList
-            //  int basketIndex = basketList.Count - 1;
+        // Get the index of the last Basket in basketList
+        int basketIndex = basketList.Count - 1;
 
-            // Get a reference to that Basket GameObject
-            GameObject tBasketGO = basketList[0];
+        // Get a reference to that Basket GameObject
+        GameObject tBasketGO = basketList[basketIndex];
 
-            // Remove the Basket from the list and destroy the GameObject
-            basketList.RemoveAt(0);
-            Destroy(tBasketGO);
+        // Remove the Basket from the list and destroy the GameObject
+        basketList.RemoveAt(basketIndex);
 
-            //no baskets left
-            if (basketList.Count == 0)
-                {
-                SceneManager.LoadScene("Scene1_ApplePicker");
-                }
+        Destroy(tBasketGO);
+
+        // If there are no Baskets left, restart the game
+
+        if (basketList.Count == 0)
+        {
+
+            SceneManager.LoadScene("_Scene_0");
+
         }
     }
+}

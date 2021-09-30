@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
-    
+
+    static private Slingshot S; //singleton of self
+
+
     [Header("Set in Inspector")]
     public GameObject prefabProjectile; //Projectile prefab cached to instantiate
     public float velocityMult = 8f;
@@ -17,8 +20,19 @@ public class Slingshot : MonoBehaviour
 
     private Rigidbody projectileRigidbody;
 
+    public static Vector3 LAUNCH_POS //no set, so public read access only.
+    {
+        get
+        {
+            if (S == null) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+  
+
     private void Awake()
     {
+        S = this;
         Transform launchPointTrans = transform.Find("LaunchPoint"); //temp cache transform of launchpoint
         launchPoint = launchPointTrans.gameObject;
         launchPoint.SetActive(false);

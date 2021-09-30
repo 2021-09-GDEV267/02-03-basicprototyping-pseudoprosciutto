@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class Goals : MonoBehaviour
 {
 	static public bool 	goalMet = false;
 
@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
 		// check to see if it's a Projectile 
 		if (other.gameObject.tag == "Projectile") {
 			// if so, set goalMet = true
-			Goal.goalMet = true;
+			Goals.goalMet = true;
 
 			// also set the alpha of the color of higher opacity
 			Material mat = GetComponent<Renderer>().material;

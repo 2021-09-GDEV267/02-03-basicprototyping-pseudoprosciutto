@@ -17,9 +17,10 @@ public class Slingshot : MonoBehaviour
     public Vector3 launchPos; //position of launch
     public GameObject projectile;
     public bool aimingMode; //firing state
-
     private Rigidbody projectileRigidbody;
 
+
+    //Properties:
     public static Vector3 LAUNCH_POS //no set, so public read access only.
     {
         get
@@ -82,7 +83,8 @@ public class Slingshot : MonoBehaviour
         projectile = Instantiate(prefabProjectile) as GameObject; //create projectile
         projectile.transform.position = launchPos;//place projectile
         projectileRigidbody = projectile.GetComponent<Rigidbody>();
-        projectileRigidbody.isKinematic = true; //find rigid body and add kinematic.
+        projectileRigidbody.isKinematic = true; //find rigid body and add kinematic
+                                                //kinematic stops physics forces from acting upon it?
     }
 
     //activate launch point when mouse enters

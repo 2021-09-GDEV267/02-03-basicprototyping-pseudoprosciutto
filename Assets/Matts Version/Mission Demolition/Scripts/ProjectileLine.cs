@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class ProjectileLine : MonoBehaviour
@@ -9,7 +8,6 @@ public class ProjectileLine : MonoBehaviour
     static public ProjectileLine S; //Singleton
 
     [Header("Set in Inspector")]
-
     public float minDist = 0.1f;
 
     public LineRenderer line;
@@ -32,6 +30,7 @@ public class ProjectileLine : MonoBehaviour
         set
         {
             _poi = value;
+
             if (_poi != null) //reset everything if _poi is set to something not null
                 line.enabled = false;
             points = new List<Vector3>();
@@ -53,8 +52,10 @@ public class ProjectileLine : MonoBehaviour
         Vector3 pt = _poi.transform.position;
 
         if (points.Count > 0 && (pt - lastPoint).magnitude < minDist)
-        { return; } //if point isnt far enough from last point
+        { return; } //if point isnt far enough from last point, return out.
 
+
+        //Starting the line:
         if (points.Count == 0)  //if launch point
         { 
             Vector3 launchPosDiff = pt - Slingshot.LAUNCH_POS;
@@ -92,7 +93,7 @@ public class ProjectileLine : MonoBehaviour
         {
             if (FollowCam.POI != null)
             {
-                if (FollowCam.POI.tag == "projectile")
+                if (FollowCam.POI.tag == "Projectile")
                 {
                     poi = FollowCam.POI;
                 }

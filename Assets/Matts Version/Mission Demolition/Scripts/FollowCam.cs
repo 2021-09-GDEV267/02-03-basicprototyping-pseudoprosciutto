@@ -24,7 +24,6 @@ public class FollowCam : MonoBehaviour
 
     void FixedUpdate()
     {
-
         Vector3 destination;
 
         if (POI == null) //no poi
@@ -54,6 +53,7 @@ public class FollowCam : MonoBehaviour
         destination.z = camZ;
         transform.position = destination;
 
+        //zoom out to follow
         Camera.main.orthographicSize = destination.y + 10; //set size of camera to keep ground in view.
     }
 
